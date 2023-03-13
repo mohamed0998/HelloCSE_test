@@ -51,18 +51,16 @@ export default{
         }
     },
     created() {
-        this.$axios.get('/sanctum/csrf-cookie').then(response => {
             this.$axios.get(`/api/artists/edit/${this.$route.params.id}`)
-            .then(response => {
-                this.name = response.data['name'];
-                this.description = response.data['description'];
-                this.img = "/img/"+response.data['image'];
-                this.imgPreview = this.img;
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-        })
+                .then(response => {
+                    this.name = response.data['name'];
+                    this.description = response.data['description'];
+                    this.img = "/img/" + response.data['image'];
+                    this.imgPreview = this.img;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
     },
     methods: {
         onChange(e) {
@@ -78,7 +76,7 @@ export default{
             }
         },
         updateArtist(e) {
-            this.$axios.get('/sanctum/csrf-cookie').then(response => {
+            
                 let existingObj = this;
                 const config = {
                     headers: {
@@ -97,7 +95,7 @@ export default{
                 .catch(function(error) {
                     existingObj.error = error.response.data.message;
                 });
-            });
+        
         }
     },
 }
