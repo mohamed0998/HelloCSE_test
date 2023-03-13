@@ -71,7 +71,7 @@ export default{
             }
         },
         addArtist(e) {
-            this.$axios.get('/sanctum/csrf-cookie').then(response => {
+          
                 let existingObj = this;
                 const config = {
                     headers: {
@@ -91,7 +91,7 @@ export default{
                 .catch(function(error) {
                     existingObj.error = error.response.data.message;
                 });
-            });
+          
         }
 
     },
